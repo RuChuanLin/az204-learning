@@ -2,6 +2,13 @@ Below is a concise summary of the **Network Features** for Azure App Service, ba
 
 ---
 
+There are two main deployment types for Azure App Service:
+
+- The multitenant public service hosts App Service plans in the Free, Shared, Basic, Standard, Premium, PremiumV2, and PremiumV3 pricing SKUs.
+- The single-tenant App Service Environment (ASE) hosts Isolated SKU App Service plans directly in your Azure virtual network.
+
+
+
 ## 1. Inbound Connections
 - **Multi-Tenant Front Ends**: Incoming traffic is routed by Azure’s front-end servers, which host many different customers’ apps.  
 - **App-Assigned Address**: You can use a custom domain and SSL to map your own domain (e.g., `www.contoso.com`) to your App Service.  

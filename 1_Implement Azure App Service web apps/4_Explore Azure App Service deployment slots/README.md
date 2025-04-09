@@ -10,5 +10,4 @@ After completing this module, you'll be able to:
 
 ### Terms
 
-- Azure App Service
-- Azure App Service plan
+- 
