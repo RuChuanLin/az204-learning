@@ -1,0 +1,9 @@
+{
+    "azureFunctions.javaBuildTool": "maven",
+    "azureFunctions.deploySubpath": "2_Implement Azure Functions/Demo/target/azure-functions/Demo-Azure-functions",
+    "azureFunctions.projectLanguage": "Java",
+    "azureFunctions.projectRuntime": "~4",
+    "debug.internalConsoleOptions": "neverOpen",
+    "azureFunctions.preDeployTask": "package (functions)",
+    "azureFunctions.projectSubpath": "2_Implement Azure Functions/Demo"
+}

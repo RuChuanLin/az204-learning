@@ -1,0 +1,1 @@
+/Users/river/_Study/AZ204/4_Develop solutions that use Azure Cosmos DB/az204-cosmos/obj/Debug/net8.0/az204-cosmos.csproj.AssemblyReference.cache

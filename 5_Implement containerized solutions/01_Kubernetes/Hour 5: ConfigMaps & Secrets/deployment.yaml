@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hello-node-deployment   # Name of the Deployment
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: hello-node-app        # This label MUST match the Service selector
+  template:
+    metadata:
+      labels:
+        app: hello-node-app      # This label is applied to the pods
+    spec:
+      containers:
+        - name: hello-node
+          image: nginxdemos/hello
+          ports:
+            - containerPort: 80
+          env:
+            - name: APP_MODE
+              valueFrom:
+                configMapKeyRef:
+                  name: app-config
+                  key: APP_MODE
+            - name: APP_COLOR
+              valueFrom:
+                configMapKeyRef:
+                  name: app-config
+                  key: APP_COLOR
+

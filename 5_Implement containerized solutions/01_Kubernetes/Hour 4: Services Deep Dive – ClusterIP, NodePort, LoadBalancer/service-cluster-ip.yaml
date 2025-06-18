@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: hello-node-clusterip
+spec:
+  type: ClusterIP
+  selector:
+    app: hello-node-app
+  ports:
+    - port: 80
+      targetPort: 80

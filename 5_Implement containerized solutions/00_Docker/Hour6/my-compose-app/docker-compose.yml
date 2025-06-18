@@ -1,0 +1,26 @@
+version: "3.8"
+
+services:
+  db:
+    image: postgres
+    container_name: my-postgres
+    environment:
+      POSTGRES_PASSWORD: secret
+    volumes:
+      - dbdata:/var/lib/postgresql/data
+
+  app:
+    build: .
+    container_name: node-app
+    depends_on:
+      - db
+    ports:
+      - "3000:3000"
+    environment:
+      PGHOST: db
+      PGUSER: postgres
+      PGPASSWORD: secret
+      PGDATABASE: postgres
+
+volumes:
+  dbdata:

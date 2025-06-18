@@ -1,0 +1,45 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: node-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: node-app
+  template:
+    metadata:
+      labels:
+        app: node-app
+    spec:
+      containers:
+        - name: node-app
+          image: ruchuanlin/node-k8s-app:latest
+          env:
+            - name: DB_HOST
+              valueFrom:
+                configMapKeyRef:
+                  name: app-config
+                  key: DB_HOST
+            - name: DB_PORT
+              valueFrom:
+                configMapKeyRef:
+                  name: app-config
+                  key: DB_PORT
+            - name: DB_NAME
+              valueFrom:
+                configMapKeyRef:
+                  name: app-config
+                  key: DB_NAME
+            - name: DB_USER
+              valueFrom:
+                secretKeyRef:
+                  name: app-secret
+                  key: POSTGRES_USER
+            - name: DB_PASS
+              valueFrom:
+                secretKeyRef:
+                  name: app-secret
+                  key: POSTGRES_PASSWORD
+          ports:
+            - containerPort: 3000

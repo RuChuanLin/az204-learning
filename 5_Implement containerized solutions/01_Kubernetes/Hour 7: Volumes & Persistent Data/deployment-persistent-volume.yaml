@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hello-node-deployment   # Name of the Deployment
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: hello-node-app        # This label MUST match the Service selector
+  template:
+    metadata:
+      labels:
+        app: hello-node-app      # This label is applied to the pods
+    spec:
+      containers:
+        - name: app
+          image: busybox
+          command: ["sh", "-c", "echo Hello > /mnt/data/hello.txt && sleep 3600"]
+          volumeMounts:
+            - name: demo-storage
+              mountPath: /mnt/data
+      volumes:
+        - name: demo-storage
+          persistentVolumeClaim:
+            claimName: demo-pvc
